@@ -2,7 +2,13 @@
     display: none;
 }
 
-.gird {
+.socre {
+    display: absolute;
+    width: 400px;
+    height: 70px;
+}
+
+.grid {
     border-radius: 2%;
     display: flex;
     flex-wrap: wrap;
@@ -14,28 +20,31 @@
 .block-none {
     border-radius: 10%;
     background-color: rgb(204, 192, 180);
-    width: 90px;
-    height: 90px;
+    width: 85px;
+    height: 85px;
+    margin-left: 12px;
 }
 
 .two {
     border-radius: 10%;
-    background-color: rgb(238, 228, 218);
-    width: 90px;
-    height: 90px;
-    color: rgb(78, 78, 78);
-    font-size: 45px;
+    width: 85px;
+    height: 85px;
+    font-size: 60px;
     text-align: center;
     font-weight: bold;
+    margin-left: 12px;
+    background-color: rgb(238, 228, 218);
+    color: rgb(78, 78, 78);
 }
 
 .four {
     border-radius: 10%;
-    background-color: rgb(235, 220, 192);
-    width: 90px;
-    height: 90px;
-    color: rgb(78, 78, 78);
-    font-size: 45px;
+    width: 85px;
+    height: 85px;
+    font-size: 60px;
     text-align: center;
     font-weight: bold;
+    margin-left: 12px;
+    background-color: rgb(235, 220, 192);
+    color: rgb(78, 78, 78);
 }
