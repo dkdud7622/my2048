@@ -1,0 +1,41 @@
+.hidden {
+    display: none;
+}
+
+.gird {
+    border-radius: 2%;
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
+    height: 500px;
+    background-color: rgb(187, 173, 160);
+}
+
+.block-none {
+    border-radius: 10%;
+    background-color: rgb(204, 192, 180);
+    width: 90px;
+    height: 90px;
+}
+
+.two {
+    border-radius: 10%;
+    background-color: rgb(238, 228, 218);
+    width: 90px;
+    height: 90px;
+    color: rgb(78, 78, 78);
+    font-size: 45px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.four {
+    border-radius: 10%;
+    background-color: rgb(235, 220, 192);
+    width: 90px;
+    height: 90px;
+    color: rgb(78, 78, 78);
+    font-size: 45px;
+    text-align: center;
+    font-weight: bold;
+}
