@@ -1,22 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
     const gridDisplay = document.querySelector(".grid");
-    const scocreDisplay = document.querySelector("#score");
+    const scoreDisplay = document.querySelector("#score");
     const resultDisplay = document.querySelector("#result");
     let width = 4;
-    console.log(width);
     let squares = [];
     let score = 0;
 
-    const BLOCK_NONE = "block-none";
-    const TWO = "two";
-    const FOUR = "four"
+    const BLOCK = "block";
+
+    let moveSuccess = 0;
 
 
     function createBoard() {
         gridDisplay.style.display = "flex"
         for (let i = 0; i < width * width; i++) {
             square = document.createElement("div");
-            square.classList.add(BLOCK_NONE);
+            square.classList.add(BLOCK);
             square.innerHTML = "";
 
             gridDisplay.appendChild(square);
@@ -27,21 +26,69 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     createBoard();
 
+
+
     function generate() {
         let randomNumber = Math.floor(Math.random() * squares.length);
         if (squares[randomNumber].innerHTML === "") {
             let ran = Math.floor(Math.random() * 10)
             if (ran < 2) {
-                squares[randomNumber].classList.remove(BLOCK_NONE);
-                squares[randomNumber].classList.add(FOUR)
                 squares[randomNumber].innerHTML = 4;
             } else {
-                squares[randomNumber].classList.remove(BLOCK_NONE);
-                squares[randomNumber].classList.add(TWO)
                 squares[randomNumber].innerHTML = 2;
             }
+            changeBlock();
+
         } else {
-            generate()
+            generate();
         }
     }
+
+
+    function moveRight() {
+        for (let i = 0; i < width * width; i++) {
+            if (i % 4 === 0) {
+                let totalOne = squares[i].innerHTML;
+                let totalTwo = squares[i + 1].innerHTML;
+                let totalThree = squares[i + 2].innerHTML;
+                let totalFour = squares[i + 3].innerHTML;
+
+                let row = [parseInt(totalOne), parseInt(totalTwo), parseInt(totalThree), parseInt(totalFour)];
+                let filteredRow = row.filter(num => num);
+                console.log(row);
+                console.log(filteredRow);
+
+                let missing = width - filteredRow.length;
+                let zeros = Array(missing).fill("");
+
+                let newRow = zeros.concat(filteredRow);
+                console.log(newRow);
+
+                if ((squares[i].innerHTML === newRow[0]) && (squares[i + 1].innerHTML === newRow[1]) && (squares[i + 2].innerHTML === newRow[2]) && (squares[i + 3].innerHTML === newRow[3])) {
+                    moveSuccess = 0; //움직이지 않은 경우
+                } else {
+                    moveSuccess = 1; //움직인 경우
+                }
+
+                squares[i].innerHTML = newRow[0];
+                squares[i + 1].innerHTML = newRow[1];
+                squares[i + 2].innerHTML = newRow[2];
+                squares[i + 3].innerHTML = newRow[3];
+                changeBlock();
+
+            }
+        }
+    }
+
+    function control(e) {
+        if (e.keyCode === 39) {
+            keyRight();
+        }
+    }
+    document.addEventListener('keyup', control);
+
+    function keyRight() {
+        moveRight();
+    }
+
 })
