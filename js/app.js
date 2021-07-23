@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 squares[i].style.color = "#4E4E4E";
             }
             if (squares[i].innerHTML === "4") {
-                squares[i].style.backgroundColor = "#EBDCC0";
+                squares[i].style.backgroundColor = "#F4E4C9";
                 squares[i].style.color = "#4E4E4E";
             }
             if (squares[i].innerHTML === "8") {
@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (squares[i].innerHTML === "128") {
                 squares[i].style.backgroundColor = "#F9D673";
                 squares[i].style.color = "#ffffff";
+                squares[i].style.fontSize = "42px"
             }
             if (squares[i].innerHTML === "256") {
                 squares[i].style.backgroundColor = "#FBD76A";
@@ -216,25 +217,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function combineRowRight() {
         for (let i = 0; i < width * width - 1; i++) {
-            let tm = (i + 1) % 4
-            console.log(tm);
+            let tm = (i + 1) % width
             if (squares[i].innerHTML === squares[i + 1].innerHTML && tm !== 0 && squares[i].innerHTML !== "") {
                 let combineTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i + 1].innerHTML);
                 squares[i].innerHTML = "";
                 squares[i + 1].innerHTML = combineTotal;
                 moveSuccess += 1;
+                score += combineTotal;
+                scoreDisplay.innerHTML = score
             }
         }
     }
 
     function combineRowLeft() {
         for (let i = 0; i < width * width - 1; i++) {
-            let tm = (i + 1) % 4
+            let tm = (i + 1) % width
             if (squares[i].innerHTML === squares[i + 1].innerHTML && tm > 0 && squares[i].innerHTML !== "") {
                 let combineTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i + 1].innerHTML);
                 squares[i].innerHTML = combineTotal;;
                 squares[i + 1].innerHTML = "";
                 moveSuccess += 1;
+                score += combineTotal;
+                scoreDisplay.innerHTML = score
             }
         }
     }
@@ -246,17 +250,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 squares[i].innerHTML = combinedTotal;
                 squares[i + width].innerHTML = "";
                 moveSuccess += 1;
+                score += combinedTotal;
+                scoreDisplay.innerHTML = score
             }
         }
     }
 
     function combineColumnDown() {
-        for (let i = 0; i < (width * width) - width; i++) {
-            if (squares[i].innerHTML === squares[i + width].innerHTML && squares[i].innerHTML !== "") {
-                let combinedTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i + width].innerHTML);
-                squares[i].innerHTML = "";
-                squares[i + width].innerHTML = combinedTotal;
+        for (let i = (width * width - 1); i >= width; i--) {
+            if (squares[i].innerHTML === squares[i - width].innerHTML && squares[i].innerHTML !== "") {
+                let combinedTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i - width].innerHTML);
+                squares[i].innerHTML = combinedTotal;
+                squares[i - width].innerHTML = "";
                 moveSuccess += 1;
+                score += combinedTotal;
+                scoreDisplay.innerHTML = score
             }
         }
     }

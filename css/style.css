@@ -2,7 +2,7 @@
     display: none;
 }
 
-.socre {
+.score {
     display: absolute;
     width: 400px;
     height: 70px;
@@ -26,4 +26,15 @@
     font-weight: bold;
     margin-left: 12px;
     font-size: 60px;
+}
+
+@keyframes new {
+    from {
+        width: 0px;
+        height: 0px;
+    }
+    to {
+        width: 80px;
+        height: 80px;
+    }
 }
