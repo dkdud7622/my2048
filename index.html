@@ -8,29 +8,32 @@
     <title>my 2048</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/start.css">
+    <link rel="stylesheet" href="css/score.css">
 </head>
 
 <body>
     <div id="start-display" class="start-grid">
-        <div class="text">2048</div>
-        <div class="button-place">
+        <div class="text stop-dragging">2048</div>
+        <div class="button-place stop-dragging">
             <div id="four" class="button1">4x4</div>
             <div id="eight" class="button2">8x8</div>
         </div>
     </div>
 
-    <div id="play-display" class="hidden">
-        <div id="result"></div>
-        <div class="grid">
+    <div id="play-display" class="hidden stop-dragging">
+        <div id="result " class="hidden">You win!
+            <div>press any key to continue</div>
+        </div>
+        <div class="grid ">
             <div class="score">
-                <div class="score-title">score</div>
-                <div id="score">0</div>
+                <div class="score-title">score
+                    <div id="score" class="stop-dragging">0</div>
+                </div>
             </div>
         </div>
     </div>
 
 </body>
-<script src="js/start.js"></script>
 <script src="js/app.js"></script>
 
 </html>

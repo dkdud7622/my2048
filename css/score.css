@@ -1,0 +1,19 @@
+.score-title {
+    display: absolute;
+    border-radius: 10px;
+    width: 125px;
+    height: 70px;
+    margin-top: 8px;
+    margin-left: 263px;
+    color: #4E4E4E;
+    background-color: #EEE4DA;
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.score {
+    display: absolute;
+    width: 400px;
+    height: 70px;
+}

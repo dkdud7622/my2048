@@ -2,14 +2,36 @@ document.addEventListener("DOMContentLoaded", () => {
     const gridDisplay = document.querySelector(".grid");
     const scoreDisplay = document.querySelector("#score");
     const resultDisplay = document.querySelector("#result");
+    const startDisplay = document.getElementById("start-display")
+    const playDisplay = document.getElementById("play-display")
+    const buttonFour = document.getElementById("four");
+    const buttonEight = document.getElementById("eight");
+
+    console.log(resultDisplay);
+
     let width = 4;
     let squares = [];
-    let move = [];
     let score = 0;
+    let win = 0;
 
     const BLOCK = "block";
 
     let moveSuccess = 0;
+    let num = 0;
+
+    buttonFour.addEventListener('click', (event) => {
+        startDisplay.style.display = "none"
+        startDisplay.classList.add("hidden");
+        playDisplay.classList.remove("hidden");
+        num = 4;
+    })
+
+    buttonEight.addEventListener('click', (event) => {
+        startDisplay.style.display = "none"
+        startDisplay.classList.add("hidden");
+        playDisplay.classList.remove("hidden");
+        num = 8;
+    })
 
 
     function createBoard() {
@@ -60,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (squares[i].innerHTML === "128") {
                 squares[i].style.backgroundColor = "#F9D673";
                 squares[i].style.color = "#ffffff";
-                squares[i].style.fontSize = "42px"
+                //squares[i].style.fontSize = "42px"
             }
             if (squares[i].innerHTML === "256") {
                 squares[i].style.backgroundColor = "#FBD76A";
@@ -74,7 +96,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 squares[i].style.backgroundColor = "#F9C138";
                 squares[i].style.color = "#ffffff";
             }
-
+            if (squares[i].innerHTML.length > 2) {
+                squares[i].style.fontSize = "42px";
+                squares[i].style.lineHeight = "1.9";
+            }
+            if (squares[i].innerHTML.length < 3) {
+                squares[i].style.fontSize = "60px"
+                squares[i].style.lineHeight = "1.2"
+            }
         }
     }
 
@@ -227,6 +256,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 scoreDisplay.innerHTML = score
             }
         }
+        checkForWin();
     }
 
     function combineRowLeft() {
@@ -241,6 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 scoreDisplay.innerHTML = score
             }
         }
+        checkForWin();
     }
 
     function combineColumnUp() {
@@ -254,6 +285,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 scoreDisplay.innerHTML = score
             }
         }
+        checkForWin();
     }
 
     function combineColumnDown() {
@@ -267,6 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 scoreDisplay.innerHTML = score
             }
         }
+        checkForWin();
     }
 
 
@@ -328,5 +361,19 @@ document.addEventListener("DOMContentLoaded", () => {
         moveSuccess = 0;
     }
 
+    function whenWin() {
+        resultDisplay.classList.add("hidden");
+        win += 1;
+    }
+
+    function checkForWin() {
+        if (win === 0) {
+            for (let i = 0; i < squares.length; i++) {
+                if (squares[i].innerHTML === "8") {
+                    resultDisplay.addEventListener("keyup", whenWin)
+                }
+            }
+        }
+    }
 
 })
