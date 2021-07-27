@@ -20,7 +20,7 @@
     font-weight: bold;
     margin-left: 12px;
     font-size: 60px;
-    transition: 20ms ease-in-out;
+    transition: 100ms ease-in-out;
 }
 
 @keyframes new {

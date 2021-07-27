@@ -369,7 +369,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function checkForWin() {
         if (win === 0) {
             for (let i = 0; i < squares.length; i++) {
-                if (squares[i].innerHTML === "8") {
+                if (squares[i].innerHTML === 8) {
                     resultDisplay.addEventListener("keyup", whenWin)
                 }
             }
